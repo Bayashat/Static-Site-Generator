@@ -31,6 +31,10 @@ class HTMLNode:
 
 
 class LeafNode(HTMLNode):
+    """
+    A LeafNode represents a single HTML element with a tag and value.
+    """
+
     def __init__(self, tag, value, props=None):
         super().__init__(tag, value, None, props)
 
@@ -48,7 +52,11 @@ class LeafNode(HTMLNode):
 
 
 class ParentNode(HTMLNode):
-    def __init__(self, tag, children: list[LeafNode, HTMLNode], props=None):
+    """
+    A ParentNode represents an HTML element that can have children.
+    """
+
+    def __init__(self, tag, children: list[LeafNode], props=None):
         super().__init__(tag, None, children, props)
 
     def to_html(self):
