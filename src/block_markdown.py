@@ -1,9 +1,9 @@
 from enum import Enum
 from typing import List
 
-from htmlnode import HTMLNode, LeafNode, ParentNode
-from inline_markdown import text_to_text_nodes
-from textnode import TextNode, TextType, text_node_to_html_node
+from src.htmlnode import HTMLNode, LeafNode, ParentNode
+from src.inline_markdown import text_to_text_nodes
+from src.textnode import TextNode, TextType, text_node_to_html_node
 
 
 class BlockType(Enum):

@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional
 
-from htmlnode import HTMLNode, LeafNode
+from src.htmlnode import HTMLNode, LeafNode
 
 
 class TextType(Enum):

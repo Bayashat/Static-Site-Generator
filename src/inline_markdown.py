@@ -1,7 +1,7 @@
 import re
 from typing import List, Tuple
 
-from textnode import TextNode, TextType
+from src.textnode import TextNode, TextType
 
 
 def text_to_text_nodes(text: str) -> List[TextNode]:

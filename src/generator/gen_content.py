@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-from block_markdown import markdown_to_html_node
+from src.block_markdown import markdown_to_html_node
 
 
 def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, base_path):
