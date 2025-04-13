@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional
 
-from htmlnode import LeafNode
+from htmlnode import HTMLNode, LeafNode
 
 
 class TextType(Enum):
@@ -32,7 +32,7 @@ class TextNode:
         return f"TextNode({self.text}, {self.text_type.value}, {self.url})"
 
 
-def text_node_to_html_node(text_node: TextNode):
+def text_node_to_html_node(text_node: TextNode) -> HTMLNode:
     if text_node.text_type == TextType.TEXT:
         return LeafNode(None, text_node.text)
     elif text_node.text_type == TextType.BOLD:
