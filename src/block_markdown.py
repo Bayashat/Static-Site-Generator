@@ -15,6 +15,15 @@ class BlockType(Enum):
     OLIST = "ordered_list"
 
 
+def markdown_to_html_node(markdown: str) -> HTMLNode:
+    blocks: List[str] = markdown_to_blocks(markdown)
+    children = []
+    for block in blocks:
+        html_node = block_to_html_node(block)
+        children.append(html_node)
+    return ParentNode("div", children, None)
+
+
 def markdown_to_blocks(markdown: str) -> List[str]:
     blocks = list(
         filter(lambda x: bool(x), [block.strip() for block in markdown.split("\n\n")])
@@ -56,15 +65,6 @@ def text_to_children(text: str) -> List[HTMLNode]:
         html_node: HTMLNode = text_node_to_html_node(text_node)
         children.append(html_node)
     return children
-
-
-def markdown_to_html_node(markdown: str) -> HTMLNode:
-    blocks: List[str] = markdown_to_blocks(markdown)
-    children = []
-    for block in blocks:
-        html_node = block_to_html_node(block)
-        children.append(html_node)
-    return ParentNode("div", children, None)
 
 
 def block_to_html_node(block) -> HTMLNode:

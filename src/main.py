@@ -1,19 +1,27 @@
-from textnode import TextNode, TextType
+import os
+import shutil
+
+from block_markdown import markdown_to_html_node
+from copy_static import copy_files_recursive
+from gen_content import generate_page, generate_pages_recursive
+from htmlnode import HTMLNode
+
+dir_path_static = "./static"
+dir_path_public = "./public"
+dir_path_content = "./content"
+template_path = "./template.html"
 
 
 def main():
-    text_nodes = [
-        TextNode("Hello", TextType.NORMAL),
-        TextNode("This is some anchor text", TextType.LINK, "https://example.com"),
-        TextNode("This is some code", TextType.CODE),
-        TextNode("This is some bold text", TextType.BOLD),
-        TextNode("This is some italic text", TextType.ITALIC),
-        TextNode("This is an image", TextType.IMAGE, "https://example.com/image.png"),
-    ]
-    for node in text_nodes:
-        print(node)
-        print("-" * 20)
+    print("Deleting public directory...")
+    if os.path.exists(dir_path_public):
+        shutil.rmtree(dir_path_public)
+
+    print("Copying static files to public directory...")
+    copy_files_recursive(dir_path_static, dir_path_public)
+
+    print("Generating content...")
+    generate_pages_recursive(dir_path_content, template_path, dir_path_public)
 
 
-if __name__ == "__main__":
-    main()
+main()
